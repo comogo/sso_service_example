@@ -50,7 +50,6 @@ var Auth = function(jwtSecret, dataSecret) {
   this.decodeToken = function(token) {
     var data = null;
 
-    console.log(jwtSecret);
     jwt.verify(token, jwtSecret, function(err, decoded) {
       if (!err) {
         data = JSON.parse(decrypt(decoded.token));

@@ -2,6 +2,7 @@ var express    = require('express');
 var bodyParser = require('body-parser');
 var path       = require('path');
 var logger     = require('morgan');
+var User       = require('./models/user');
 var Auth       = require('./auth');
 
 app = express();
@@ -20,9 +21,15 @@ app.get('/', function(req, res) {
 });
 
 app.post('/signup', function(req, res) {
-  console.log(req.params);
+  var user = new User(req.body);
 
-  res.end();
+  if (user.isValid()) {
+    User.add(user);
+
+    res.status(200).json(user).end();
+  } else {
+    res.status(422).end();
+  }
 });
 
 app.post('/login', function(req, res) {

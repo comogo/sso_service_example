@@ -1,0 +1,29 @@
+<form name="signupForm"
+      ng-submit="submit()"
+      novalidate>
+
+  <h2>Signup</h2>
+
+  <div class="message" ng-show="notice || error">
+    <div class="notice" ng-show="notice">
+      {{notice}}
+    </div>
+
+    <div class="error" ng-show="error">
+      {{error}}
+    </div>
+  </div>
+
+  <div class="fields">
+    <form-field name="name" required="true" ng-model="user.name"></form-field>
+    <form-field name="username" required="true" ng-model="user.username"></form-field>
+    <form-field name="email" required="true" type="email" ng-model="user.email"></form-field>
+    <form-field name="password" required="true" type="password" ng-model="user.password"></form-field>
+    <form-field name="password_confirmation" label="Password Confirmation" required="true" type="password" ng-model="user.password_confirmation"></form-field>
+  </div>
+
+  <div class="buttons">
+    <input type="submit" value="Signup" ng-disabled="signupForm.$invalid" /> or
+    <a href="#" ng-click="main.showLogin()">Login</a>
+  </div>
+</form>

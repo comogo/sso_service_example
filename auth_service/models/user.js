@@ -9,8 +9,8 @@ var User = function(options) {
   this.isValidPassword = function(password) {
     // TODO: improve this
     return password == that.password;
-  }
-}
+  };
+};
 
 // Returns null or the founded user
 User.find = function(options) {
@@ -26,6 +26,6 @@ User.find = function(options) {
   }
 
   return null;
-}
+};
 
 module.exports = User;

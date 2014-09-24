@@ -58,7 +58,7 @@ var Auth = function(jwtSecret, dataSecret) {
     });
 
     return data;
-  }
-}
+  };
+};
 
 module.exports = Auth;

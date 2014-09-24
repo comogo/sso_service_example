@@ -7,25 +7,32 @@ var User = function(options) {
   this.password = options.password;
 
   this.isValidPassword = function(password) {
-    // TODO: improve this
     return password == that.password;
   };
 };
 
+User.repository = [
+  new User({ id: 1, name: 'Administrator', username: 'admin', email: 'admin@foo.com', password: 'admin' })
+];
+
 // Returns null or the founded user
 User.find = function(options) {
-  // TODO: improve this
-  if (options.username == 'admin') {
-    return new User({
-      id: 14,
-      name: 'Administrator',
-      username: 'admin',
-      email: 'admin@foo.com',
-      password: '123456'
-    });
+  var users = this.repository,
+      username = options.username;
+
+  for(var i in users) {
+    if (users[i].username == username) {
+      return users[i];
+    }
   }
 
   return null;
+};
+
+User.add = function(user) {
+  user.id = this.repository.length + 1;
+
+  this.repository.push(user);
 };
 
 module.exports = User;

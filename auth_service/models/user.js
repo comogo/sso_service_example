@@ -6,6 +6,10 @@ var User = function(options) {
   this.email = options.email;
   this.password = options.password;
 
+  this.isValid = function() {
+    return this.name && this.username && this.email && this.password;
+  };
+
   this.isValidPassword = function(password) {
     return password == that.password;
   };

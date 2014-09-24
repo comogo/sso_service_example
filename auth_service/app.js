@@ -36,9 +36,11 @@ app.post('/login', function(req, res) {
   var user = auth.check(req.body.username, req.body.password);
 
   if (user) {
-    res.send(auth.generateToken(user));
+    res.json({
+      token: auth.generateToken(user)
+    }).end();
   } else {
-    res.render('index', req.body);
+    res.status(422).end();
   }
 });
 
